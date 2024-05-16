@@ -48,12 +48,10 @@ jobs:
 
       - name: "🚀 release package"
         id: semantic-release
-
+        uses: medijobs/release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          pnpm exec semantic-release
 
       - name: "echo outputs"
         run: |
