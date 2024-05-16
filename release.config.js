@@ -105,10 +105,6 @@ addPlugin("@semantic-release/changelog", {
 > All notable changes to this project will be documented in this file`,
 });
 
-addPlugin("@semantic-release/npm", {
-  tarballDir: "pack",
-});
-
 addPlugin("@semantic-release/git", {
   assets: [
     "LICENSE*",
