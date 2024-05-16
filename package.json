@@ -1,0 +1,45 @@
+{
+  "name": "@ogdev/release",
+  "description": "Node.js actions compatible semantic-release shareable config to publish to npmjs.com and ghcr.io",
+  "version": "1.0.1",
+  "license": "MIT",
+  "files": [
+    "release.config.js"
+  ],
+  "main": "release.config.js",
+  "author": "Ogbonna Sunday <sunday@ogbonna.dev>",
+  "engines": {
+    "node": ">=21",
+    "pnpm": ">=8"
+  },
+  "bugs": "https://github.com/ogdev-01/release/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ogdev-01/release.git"
+  },
+  "peerDependencies": {
+    "semantic-release": ">=23.0.2"
+  },
+  "dependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^11.1.0",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^9.2.6",
+    "@semantic-release/npm": "^11.0.2",
+    "@semantic-release/release-notes-generator": "^12.1.0",
+    "conventional-changelog-conventionalcommits": "^7.0.2",
+    "eclass-docker-fork": "^1.3.1",
+    "npmlog": "^7.0.1",
+    "semantic-release": ">=23.0.2",
+    "semantic-release-major-tag": "^0.3.2",
+    "semantic-release-replace-plugin": "^1.2.7"
+  },
+  "scripts": {
+    "push": "pnpm push",
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

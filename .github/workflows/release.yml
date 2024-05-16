@@ -1,0 +1,52 @@
+name: "Semantic release"
+
+on:
+  push:
+    branches:
+      - main
+      - alpha
+      - beta
+      - next
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  setup:
+    name: Set environment variables
+    runs-on: ubuntu-latest
+    outputs:
+      DEPLOY_ENVIRONMENT: ${{ steps.env.outputs.DEPLOY_ENVIRONMENT }}
+    steps:
+      - name: "☁️ compute environment variables"
+        id: env
+        run: |
+          echo "DEPLOY_ENVIRONMENT=$([[ ${{ github.ref_name }} == 'main' ]] && echo 'production' || echo ${{ github.ref_name }})" >> $GITHUB_OUTPUT
+
+  release:
+    name: "Release package"
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - name: "☁️ checkout repository"
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: "🔧 setup node"
+        uses: actions/setup-node@v4
+        with:
+          node-version: 21
+
+      - name: "🔧 Install pnpm@latest"
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
+
+      - name: "🔧 Install dependencies"
+        run: pnpm install
+
+      - name: "🚀 release package"
+        uses: cycjimmy/semantic-release-action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
