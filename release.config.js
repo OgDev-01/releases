@@ -35,8 +35,8 @@ const addPlugin = (plugin, options) => {
   return releaseConfig.plugins.push([plugin, options]);
 };
 
-!GIT_COMMITTER_NAME && (process.env.GIT_COMMITTER_NAME = "ogdev automator[bot]");
-!GIT_COMMITTER_EMAIL && (process.env.GIT_COMMITTER_EMAIL = "oliviamegan11@gmail.com");
+!GIT_COMMITTER_NAME && (process.env.GIT_COMMITTER_NAME = "ogdev-automator[bot]");
+!GIT_COMMITTER_EMAIL && (process.env.GIT_COMMITTER_EMAIL = "169977982+ogdev-automator[bot]@users.noreply.github.com");
 
 try {
   const authorName = execSync(`git log -1 --pretty=format:%an ${GITHUB_SHA}`, { encoding: "utf8", stdio: "pipe" });
@@ -109,6 +109,40 @@ addPlugin("@semantic-release/npm", {
   tarballDir: "pack",
 });
 
+const actionExists = existsSync("./action.yml");
+if (actionExists) {
+  // regex the content of action.yml to replace the image tag
+  const actionYml = execSync(`cat action.yml`, { encoding: "utf8", stdio: "pipe" });
+  const re = new RegExp(`image:\\s'docker:\/\/ghcr.io\/${owner}\/${repo}:.*'`, "g");
+  const imageTag = actionYml.match(re);
+
+  if (!imageTag) {
+    log.warn(`Unable to find image tag in action.yml, no action will be published to the GitHub Container Registry`);
+    log.warn(`Please add the following to your action.yml file:`);
+    log.warn(`image: 'docker://ghcr.io/${owner}/${repo}:latest'`);
+  }
+
+  imageTag &&
+    addPlugin("semantic-release-replace-plugin", {
+      replacements: [
+        {
+          files: ["action.yml"],
+          from: `image: 'docker://ghcr.io/${owner}/${repo}:.*'`,
+          to: `image: 'docker://ghcr.io/${owner}/${repo}:\${nextRelease.version}'`,
+          results: [
+            {
+              file: "action.yml",
+              hasChanged: true,
+              numMatches: 1,
+              numReplacements: 1,
+            },
+          ],
+          countMatches: true,
+        },
+      ],
+    });
+}
+
 addPlugin("@semantic-release/git", {
   assets: [
     "LICENSE*",
@@ -135,6 +169,21 @@ addPlugin("@semantic-release/github", {
     },
   ],
 });
+
+const dockerExists = existsSync("./Dockerfile");
+if (dockerExists) {
+  addPlugin("eclass-docker-fork", {
+    baseImageName: `${owner}/${repo}`,
+    registries: [
+      {
+        url: "ghcr.io",
+        imageName: `ghcr.io/${owner}/${repo}`,
+        user: "GITHUB_REPOSITORY_OWNER",
+        password: "GITHUB_TOKEN",
+      },
+    ],
+  });
+}
 
 addPlugin("semantic-release-major-tag");
 

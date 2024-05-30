@@ -1,7 +1,7 @@
 {
   "name": "@ogdev/release",
   "description": "Node.js actions compatible semantic-release shareable config to publish to npmjs.com and ghcr.io",
-  "version": "1.0.1",
+  "version": "0.0.0-development",
   "license": "MIT",
   "files": [
     "release.config.js"
@@ -33,7 +33,7 @@
     "semantic-release-replace-plugin": "^1.2.7"
   },
   "scripts": {
-    "push": "pnpm push",
+    "push": "npm push",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "publishConfig": {

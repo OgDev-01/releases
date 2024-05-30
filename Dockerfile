@@ -1,5 +1,7 @@
 FROM node:21-alpine
 
+WORKDIR /app
+
 RUN apk add --update --no-cache git git-lfs jq openssh
 
 COPY package.json /

@@ -1,0 +1,14 @@
+name: "@ogdev-01/release"
+author: "ogdev-01"
+description: "Run TMCB-SPACE/release on a repo"
+outputs:
+  release-tag:
+    description: "The tag that was released on success"
+  release-version:
+    description: "The version that was released on success"
+branding:
+  icon: "package"
+  color: "yellow"
+runs:
+  using: "docker"
+  image: "docker://ghcr.io/ogdev-01/release:0.0.0-development"
