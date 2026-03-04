@@ -5,6 +5,10 @@
 
 > All notable changes to this project will be documented in this file
 
+## 1.0.0-beta.2 (2026-03-04)
+
+* feat: switch to npm Trusted Publishers (OIDC) for tokenless publishing ([ab837da](https://github.com/OgDev-01/releases/commit/ab837da))
+
 ## 1.0.0-beta.1 (2026-03-04)
 
 * fix: add GITHUB_TOKEN write permissions for semantic-release ([69fb83e](https://github.com/OgDev-01/releases/commit/69fb83e))

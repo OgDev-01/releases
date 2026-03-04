@@ -11,4 +11,4 @@ branding:
   color: 'blue'
 runs:
   using: 'docker'
-  image: 'docker://ghcr.io/ogdev-01/releases:1.0.0-beta.1'
+  image: 'docker://ghcr.io/ogdev-01/releases:1.0.0-beta.2'
