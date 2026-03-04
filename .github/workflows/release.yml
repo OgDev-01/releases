@@ -14,6 +14,7 @@ permissions:
   issues: write
   pull-requests: write
   packages: write
+  id-token: write
 
 concurrency:
   group: release-${{ github.ref }}
@@ -118,7 +119,6 @@ jobs:
         id: semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release
 
       - name: "echo outputs"

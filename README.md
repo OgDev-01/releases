@@ -91,7 +91,6 @@ jobs:
         uses: docker://ghcr.io/ogdev-01/releases:1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: '♻️ cleanup'
         run: |
@@ -133,7 +132,6 @@ jobs:
         uses: OgDev-01/releases@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: '♻️ cleanup'
         run: |
