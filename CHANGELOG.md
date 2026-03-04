@@ -1,0 +1,28 @@
+# 📦 ogdev-01/releases changelog
+
+[![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+[![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
+
+> All notable changes to this project will be documented in this file
+
+## 1.0.0-beta.3 (2026-03-04)
+
+* docs: remove profile image from README ([54bfe66](https://github.com/OgDev-01/releases/commit/54bfe66))
+
+## 1.0.0-beta.2 (2026-03-04)
+
+* feat: switch to npm Trusted Publishers (OIDC) for tokenless publishing ([ab837da](https://github.com/OgDev-01/releases/commit/ab837da))
+
+## 1.0.0-beta.1 (2026-03-04)
+
+* fix: add GITHUB_TOKEN write permissions for semantic-release ([69fb83e](https://github.com/OgDev-01/releases/commit/69fb83e))
+* fix: bump deprecated GitHub Actions to v4/v5/v6 ([abd5ef3](https://github.com/OgDev-01/releases/commit/abd5ef3))
+* feat: medijobs release (#6) ([0a865ea](https://github.com/OgDev-01/releases/commit/0a865ea)), closes [#6](https://github.com/OgDev-01/releases/issues/6)
+* feat: more test on release workflow (#4) ([90ce5a4](https://github.com/OgDev-01/releases/commit/90ce5a4)), closes [#4](https://github.com/OgDev-01/releases/issues/4)
+* feat: remove simantic release config (#5) ([b9ca715](https://github.com/OgDev-01/releases/commit/b9ca715)), closes [#5](https://github.com/OgDev-01/releases/issues/5)
+* feat: replicate @medijobs/release as @ogdev/release with full semantic-release config ([249f33e](https://github.com/OgDev-01/releases/commit/249f33e))
+* feat: switch to semantic release (#1) ([fa8e09f](https://github.com/OgDev-01/releases/commit/fa8e09f)), closes [#1](https://github.com/OgDev-01/releases/issues/1)
+* feat "ogdev/release test" (#3) ([d5499fb](https://github.com/OgDev-01/releases/commit/d5499fb)), closes [#3](https://github.com/OgDev-01/releases/issues/3)
+* first commit ([afff465](https://github.com/OgDev-01/releases/commit/afff465))
+* ogdev/release test (#2) ([beccd70](https://github.com/OgDev-01/releases/commit/beccd70)), closes [#2](https://github.com/OgDev-01/releases/issues/2)
+* misc: minor updates to release action ([6428dc0](https://github.com/OgDev-01/releases/commit/6428dc0))

@@ -1,16 +1,13 @@
-<div align="center">
-  <img src="https://github.com/integrated-wellness-inc.png" width="400">
-</div>
 
-# @golivwell/release
+# @ogdev/release
 
 > [**semantic-release**](https://github.com/semantic-release/semantic-release) shareable config to publish to `npm` and/or `ghcr`.
 
-> now available as a [GitHub Marketplace action](https://github.com/marketplace/actions/golivwell-release)
+> now available as a [GitHub Marketplace action](https://github.com/marketplace/actions/ogdev-release)
 
-[![Commits](https://img.shields.io/github/commit-activity/w/integrated-wellness-inc/release?style=flat)](https://github.com/integrated-wellness-inc/release/pulse)
-[![Issues](https://img.shields.io/github/issues/integrated-wellness-inc/release.svg?style=flat)](https://github.com/integrated-wellness-inc/release/issues)
-[![Releases](https://img.shields.io/github/v/release/integrated-wellness-inc/release.svg?style=flat)](https://github.com/integrated-wellness-inc/release/releases)
+[![Commits](https://img.shields.io/github/commit-activity/w/OgDev-01/releases?style=flat)](https://github.com/OgDev-01/releases/pulse)
+[![Issues](https://img.shields.io/github/issues/OgDev-01/releases.svg?style=flat)](https://github.com/OgDev-01/releases/issues)
+[![Releases](https://img.shields.io/github/v/release/OgDev-01/releases.svg?style=flat)](https://github.com/OgDev-01/releases/releases)
 
 </div>
 
@@ -37,6 +34,7 @@ Most important limitations are:
 
 - `GITHUB_TOKEN` for everything
 - `NPM_TOKEN` for public `npm` library
+- `docker` containers need to be built beforehand
 
 You can skip here if you are using elevated [Private Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token), however we don't recommend going down that path.
 
@@ -46,7 +44,7 @@ No force push or admin cherries branch protections for the following branches:
 - `next` - optional, next channel
 - `next-major` - optional, next major
 - `alpha` - optional, pre-release branch
-- `dev` - optional, pre-release branch
+- `beta` - optional, pre-release branch
 - `vX[.X.X]` - maintenance releases
 
 If you use more than the main branch, optionally create an environment that is limiting where pushes can come from and enable the merge strategy.
@@ -71,7 +69,7 @@ on:
       - next
       - next-major
       - alpha
-      - dev
+      - beta
 
 jobs:
   release:
@@ -87,12 +85,11 @@ jobs:
 
       - name: "🚀 release"
         id: semantic-release
-        uses: docker://ghcr.io/medijobs/release:1.0.0
+        uses: docker://ghcr.io/ogdev-01/releases:1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: "♻️ cleanup"
+      - name: '♻️ cleanup'
         run: |
           echo ${{ env.RELEASE_TAG }}
           echo ${{ env.RELEASE_VERSION }}
@@ -112,7 +109,7 @@ on:
       - next
       - next-major
       - alpha
-      - dev
+      - beta
 
 jobs:
   release:
@@ -129,12 +126,11 @@ jobs:
 
       - name: "🚀 release"
         id: semantic-release
-        uses: golivwell/release@v1
+        uses: OgDev-01/releases@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: "♻️ cleanup"
+      - name: '♻️ cleanup'
         run: |
           echo ${{ steps.semantic-release.outputs.release-tag }}
           echo ${{ steps.semantic-release.outputs.release-version }}
@@ -145,14 +141,14 @@ jobs:
 You can opt to use this package in your local tooling. Proceed as you would normally would, replacing `npm` with your package manager of choice and install the package:
 
 ```bash
-npm install --save-dev release
+npm install --save-dev @ogdev/release
 ```
 
 The shareable config can then be configured in the [**semantic-release** configuration file](https://github.com/semantic-release/semantic-release/blob/master/docs/usage/configuration.md#configuration):
 
 ```json
 {
-  "extends": "release"
+  "extends": "@ogdev/release"
 }
 ```
 
@@ -192,14 +188,12 @@ Using our configuration comes with some sensible defaults:
 
 - `DOCKER_USERNAME=$GITHUB_REPOSITORY_OWNER`
 - `DOCKER_PASSWORD=$GITHUB_TOKEN`
-- `GIT_COMMITTER_NAME="medijobs"`
-- `GIT_COMMITTER_EMAIL="159287579+medijobs@users.noreply.github.com"`
+- `GIT_COMMITTER_NAME="ogdev-release[bot]"`
+- `GIT_COMMITTER_EMAIL="ogdev-release[bot]@users.noreply.github.com"`
 - `GIT_AUTHOR_NAME` - parsed from commit `$GITHUB_SHA`
 - `GIT_AUTHOR_EMAIL` - parsed from commit `$GITHUB_SHA`
 
 Feel free to change any of the above to whatever suits your purpose, our motivation is to keep `GITHUB_TOKEN` and/or `NPM_TOKEN` the only necessary requirements.
-
-We are actively investigating ways to drop the 2 remaining variables as well!
 
 ## 🤝 Contributing
 
