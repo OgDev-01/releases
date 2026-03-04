@@ -1,6 +1,6 @@
 {
   "name": "@ogdev/release",
-  "description": "Node.js actions compatible semantic-release shareable config to publish to npmjs.com and ghcr.io",
+  "description": "Node.js and Docker GitHub Actions compatible semantic-release shareable config to publish to npmjs.com and ghcr.io",
   "version": "1.0.1",
   "license": "MIT",
   "files": [
@@ -9,13 +9,16 @@
   "main": "release.config.js",
   "author": "Ogbonna Sunday <sunday@ogbonna.dev>",
   "engines": {
-    "node": ">=21",
+    "node": ">=22",
     "pnpm": ">=8"
   },
-  "bugs": "https://github.com/ogdev-01/release/issues",
+  "bugs": "https://github.com/OgDev-01/releases/issues",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/ogdev-01/release.git"
+    "url": "git+ssh://git@github.com/OgDev-01/releases.git"
+  },
+  "peerDependencies": {
+    "semantic-release": ">=23.0.2"
   },
   "dependencies": {
     "@semantic-release/changelog": "^6.0.3",
@@ -33,8 +36,17 @@
     "semantic-release-replace-plugin": "^1.2.7"
   },
   "scripts": {
-    "push": "pnpm push",
+    "push": "npx cz",
     "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "devDependencies": {
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   },
   "publishConfig": {
     "access": "public"

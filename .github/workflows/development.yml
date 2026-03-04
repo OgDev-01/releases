@@ -1,0 +1,35 @@
+name: "Development"
+
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+  workflow_call:
+
+jobs:
+  test:
+    name: Test application
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: "☁️ checkout repository"
+        uses: actions/checkout@v4
+
+      - name: "🔧 setup node"
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: "🔧 setup pnpm"
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
+
+      - name: "📦 install dependencies"
+        run: pnpm install
+
+      - name: "🔍 run tests"
+        run: pnpm test

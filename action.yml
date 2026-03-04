@@ -1,0 +1,14 @@
+name: '@ogdev/release'
+author: 'OgDev-01'
+description: 'Run OgDev-01/releases on a repo'
+outputs:
+  release-tag:
+    description: 'The tag that was released on success'
+  release-version:
+    description: 'The version that was released on success'
+branding:
+  icon: 'package'
+  color: 'blue'
+runs:
+  using: 'docker'
+  image: 'docker://ghcr.io/ogdev-01/releases:1.0.1'
