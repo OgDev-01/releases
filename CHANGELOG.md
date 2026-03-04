@@ -5,6 +5,10 @@
 
 > All notable changes to this project will be documented in this file
 
+## <small>1.0.1 (2026-03-04)</small>
+
+* fix: remove environment gate and add NPM_CONFIG_PROVENANCE for reliable OIDC publishing ([184b7ef](https://github.com/OgDev-01/releases/commit/184b7ef))
+
 ## 1.0.0 (2026-03-04)
 
 * feat "ogdev/release test" (#3) ([d5499fb](https://github.com/OgDev-01/releases/commit/d5499fb)), closes [#3](https://github.com/OgDev-01/releases/issues/3)
