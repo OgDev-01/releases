@@ -5,6 +5,10 @@
 
 > All notable changes to this project will be documented in this file
 
+## 1.0.0-beta.3 (2026-03-04)
+
+* docs: remove profile image from README ([54bfe66](https://github.com/OgDev-01/releases/commit/54bfe66))
+
 ## 1.0.0-beta.2 (2026-03-04)
 
 * feat: switch to npm Trusted Publishers (OIDC) for tokenless publishing ([ab837da](https://github.com/OgDev-01/releases/commit/ab837da))
