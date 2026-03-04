@@ -9,6 +9,12 @@ on:
       - next
       - dev
 
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  packages: write
+
 concurrency:
   group: release-${{ github.ref }}
   cancel-in-progress: true
