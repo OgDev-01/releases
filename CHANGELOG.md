@@ -5,6 +5,10 @@
 
 > All notable changes to this project will be documented in this file
 
+## <small>1.0.2 (2026-03-04)</small>
+
+* fix: clear NODE_AUTH_TOKEN to unblock OIDC publishing (actions/setup-node#1440) ([2ac728c](https://github.com/OgDev-01/releases/commit/2ac728c)), closes [actions/setup-node#1440](https://github.com/actions/setup-node/issues/1440)
+
 ## <small>1.0.1 (2026-03-04)</small>
 
 * fix: remove environment gate and add NPM_CONFIG_PROVENANCE for reliable OIDC publishing ([184b7ef](https://github.com/OgDev-01/releases/commit/184b7ef))
