@@ -1,7 +1,7 @@
 {
   "name": "@ogdev/release",
   "description": "Node.js and Docker GitHub Actions compatible semantic-release shareable config to publish to npmjs.com and ghcr.io",
-  "version": "1.0.1",
+  "version": "1.0.0-beta.1",
   "license": "MIT",
   "files": [
     "release.config.js"
