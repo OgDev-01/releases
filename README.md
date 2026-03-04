@@ -1,6 +1,3 @@
-<div align="center">
-  <img src="https://github.com/OgDev-01.png" width="400">
-</div>
 
 # @ogdev/release
 
